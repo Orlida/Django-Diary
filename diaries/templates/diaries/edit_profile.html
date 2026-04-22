@@ -1,0 +1,63 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}Edit Profile — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-edit-profile">
+
+    <h1>Edit Profile</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="edit-profile-form">
+        {% csrf_token %}
+
+        <h2>Account Info</h2>
+        
+         <!--Editing Username -->
+
+        <div class="form-group">
+            <label for="{{ user_form.username.id_for_label }}">Username</label>
+            {{ user_form.username }}
+            {% if user_form.username.errors %}
+            <ul class="form-errors">
+                {% for error in user_form.username.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        
+        <!--Editing Email Address-->
+
+        <div class="form-group">
+            <label for="{{ user_form.email.id_for_label }}">Email</label>
+            {{ user_form.email }}
+            {% if user_form.email.errors %}
+            <ul class="form-errors">
+                {% for error in user_form.email.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <h2>Profile Info</h2>
+        
+        <!--Editing Profile Picture-->
+
+        <div class="form-group">
+            <label for="{{ profile_form.profile_picture.id_for_label }}">Profile Picture</label>
+            {{ profile_form.profile_picture }}
+        </div>
+        
+        <!--Editing Bio-->
+
+        <div class="form-group">
+            <label for="{{ profile_form.bio.id_for_label }}">Bio</label>
+            {{ profile_form.bio }}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'profile' user.username %}" class="btn btn-secondary">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}

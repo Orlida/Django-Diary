@@ -1,0 +1,32 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}Search — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-search">
+
+    <h1>Search Users</h1>
+
+    <form method="GET" action="{% url 'search' %}" class="search-form">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search by username...">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if query %}
+        {% if results %}
+        <div class="search-results">
+            <h2>Results for "{{ query }}"</h2>
+            {% for user in results %}
+            <div class="user-card">
+                <a href="{% url 'profile' user.username %}" class="user-card-name">@{{ user.username }}</a>
+                <a href="{% url 'profile' user.username %}" class="btn btn-secondary">View Profile</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No users found for "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+
+</div>
+{% endblock %}

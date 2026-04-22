@@ -1,0 +1,57 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}Home — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-home">
+
+    <div class="home-header">
+        <h1>My Feed</h1>
+        <a href="{% url 'entry_create' %}" class="btn btn-primary">+ New Entry</a>
+    </div>
+
+    {% if entries %}
+        <div class="entry-list">
+            {% for entry in entries %}
+            <div class="entry-card">
+                <div class="entry-card-header">
+                    <a href="{% url 'profile' entry.user.username %}" class="entry-author">
+                        @{{ entry.user.username }}
+                    </a>
+                    <span class="entry-date">{{ entry.created_at|date:"d M Y, H:i" }}</span>
+                </div>
+
+                <h2 class="entry-title">
+                    <a href="{% url 'entry_detail' entry.pk %}">{{ entry.title }}</a>
+                </h2>
+
+                <p class="entry-preview">{{ entry.content|truncatewords:30 }}</p>
+
+                <div class="entry-card-footer">
+                    <a href="{% url 'entry_detail' entry.pk %}" class="btn btn-secondary">Read more</a>
+
+                    {% if entry.user == request.user %}
+                    <a href="{% url 'entry_edit' entry.pk %}" class="btn btn-edit">Edit</a>
+                    <a href="{% url 'entry_delete' entry.pk %}" class="btn btn-delete">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% if entries.has_next %}
+            <div style="text-align: center;
+            padding: 10px;
+            margin-top: 24px;">
+                <a href="?page={{ entries.next_page_number }}" class="btn btn-secondary">More diary</a>
+            </div>
+            {% endif %}
+        </div>
+
+    {% else %}
+        <div class="empty-feed">
+            <p>No entries yet. Write your first entry or follow friends to see their diaries!</p>
+            <a href="{% url 'entry_create' %}" class="btn btn-primary">Write Now</a>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

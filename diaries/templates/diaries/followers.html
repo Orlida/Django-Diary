@@ -1,0 +1,93 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}Followers of @{{ profile_user.username }} — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-follow-list">
+
+    <div class="follow-header">
+        <div style="display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 15px;">
+            <h1>Followers</h1>
+            <input style="margin: 4px;" id="searchInput" type="text" name="q" placeholder="Search users..." required>
+        </div>
+        <p>People following <strong>@{{ profile_user.username }}</strong></p>
+        <a href="{% url 'profile' profile_user.username %}" class="btn btn-secondary">&larr; Back to Profile</a>
+    </div>
+
+    <div class="user-grid">
+        {% if followers %}
+            {% for follow_obj in followers %}
+            <div class="user-card">
+                <div>
+                    {% if follow_obj.follower.profile.profile_picture %}
+                        <img src="{{ follow_obj.follower.profile.profile_picture.url }}"
+                        alt="Profile picture"
+                        style="width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        object-fit: cover;
+                        border: 2px solid #ddd;">
+                    {% else %}
+                        <div style="width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background-color: #4a90e2;
+                        color: #fff;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;">
+                            {{ profile_user.username|first|upper }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="user-card-info">
+                    <h3><a href="{% url 'profile' follow_obj.follower.username %}">@{{ follow_obj.follower.username }}</a></h3>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-message">@{{ profile_user.username }} doesn't have any followers yet.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('searchInput').addEventListener('keyup', function(e) {
+
+        let rawSearchValue = e.target.value;
+        let searchQuery = rawSearchValue.toLowerCase();
+
+        let userCards = document.querySelectorAll('.user-card');
+        let visibleCount = 0;
+
+        userCards.forEach(function(card) {
+            let username = card.querySelector('.user-card-info h3 a').textContent.toLowerCase();
+
+            if (username.includes(searchQuery)) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        let notFoundMessage = document.getElementById('search-not-found');
+        let searchedNameSpan = document.getElementById('searched-name');
+
+        if (visibleCount === 0 && rawSearchValue.trim() !== "") {
+            searchedNameSpan.textContent = "@" + rawSearchValue;
+            notFoundMessage.style.display = 'block';
+        } else {
+            notFoundMessage.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

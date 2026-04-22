@@ -1,0 +1,115 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}@{{ profile_user.username }} — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-profile">
+
+    <div class="profile-header">
+
+        <div class="profile-info">
+            <!-- Profile Picture -->
+            <div style="display: flex;
+            align-items: center;">
+                <div style="margin-right: 10px;
+                margin-bottom: 12px;">
+                    {% if profile.profile_picture %}
+                        <img src="{{ profile.profile_picture.url }}"
+                        alt="Profile picture"
+                        style="width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        object-fit: cover;
+                        border: 2px solid #ddd;">
+                    {% else %}
+                        <div style="width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        background-color: #4a90e2;
+                        color: #fff;
+                        font-size: 2rem;
+                        font-weight: bold;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;">
+                            {{ profile_user.username|first|upper }}
+                        </div>
+                    {% endif %}
+                </div>
+                <h1 class="profile-username">@{{ profile_user.username }}</h1>
+            </div>
+
+            {% if profile.bio %}
+
+            <p style="color: #555;
+            margin-bottom: 12px;
+            line-height: 1.6;">
+                {{ profile.bio }}
+            </p>
+
+            {% endif %}
+
+            <div class="profile-stats">
+                <a href="{% url 'followers' profile_user.username %}"><span><strong>{{ followers_count }}</strong> Followers</span></a>
+                <a href="{% url 'following' profile_user.username %}"><span><strong>{{ following_count }}</strong> Following</span></a>
+            </div>
+
+            {% if is_owner %}
+            <a href="{% url 'edit_profile' profile_user.username %}" class="btn btn-secondary">Edit Profile</a>
+            {% else %}
+            <div class="profile-follow-action">
+                {% if is_following %}
+                <form method="POST" action="{% url 'unfollow' profile_user.username %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-unfollow">Unfollow</button>
+                </form>
+                {% else %}
+                <form method="POST" action="{% url 'follow' profile_user.username %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-follow">Follow</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="profile-entries">
+        {% if entries is None %}
+            <p class="locked-message">Follow <strong>@{{ profile_user.username }}</strong> to see their diary entries.</p>
+
+        {% elif entries %}
+            <h2 style="margin-bottom: 12px;">Diary Entries</h2>
+            <div class="entry-list">
+                {% for entry in entries %}
+                <div class="entry-card">
+                    <div class="entry-card-header">
+                        <span class="entry-date">{{ entry.created_at|date:"d M Y, H:i" }}</span>
+                    </div>
+                    <h3 class="entry-title">
+                        <a href="{% url 'entry_detail' entry.pk %}">{{ entry.title }}</a>
+                    </h3>
+                    <p class="entry-preview">{{ entry.content|truncatewords:20 }}</p>
+
+                    <div class="entry-card-footer">
+                        <a href="{% url 'entry_detail' entry.pk %}" class="btn btn-secondary">Read more</a>
+
+                        {% if is_owner %}
+                        <a href="{% url 'entry_edit' entry.pk %}" class="btn btn-edit">Edit</a>
+                        <a href="{% url 'entry_delete' entry.pk %}" class="btn btn-delete">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <p>No diary entries yet.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

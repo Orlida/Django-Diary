@@ -1,0 +1,617 @@
+/* ============================================================
+   GROUP6 DIARY — style.css
+   This file goes in: diaries/static/diaries/style.css
+   ============================================================ */
+
+/* ---------- RESET & BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background-color: #fff;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-links a {
+    color: #333;
+}
+
+.nav-search input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.nav-search button {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.main-content {
+    max-width: 800px;
+    width: 100%;
+    margin: 32px auto;
+    padding: 0 16px;
+    flex: 1;
+}
+
+/* ---------- MESSAGES / ALERTS ---------- */
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #eee;
+    color: #333;
+}
+
+.btn-edit {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.btn-follow {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.btn-unfollow {
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* ---------- HOME / FEED ---------- */
+.page-home {
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.empty-feed {
+    text-align: center;
+    padding: 48px 0;
+    color: #888;
+}
+
+/* ---------- ENTRY CARD ---------- */
+.entry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.entry-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.entry-card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.entry-author {
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.entry-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.entry-title a:hover {
+    text-decoration: underline;
+}
+
+.entry-preview {
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.entry-date {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.entry-card-footer {
+    display: flex;
+    gap: 8px;
+}
+
+/* ---------- ENTRY DETAIL ---------- */
+.page-entry-detail {
+}
+
+.entry-detail-header {
+    margin-bottom: 24px;
+}
+
+.entry-detail-title {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.entry-detail-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.entry-detail-content {
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 32px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.entry-detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* ---------- ENTRY FORM (CREATE / EDIT) ---------- */
+.page-entry-form {
+}
+
+.diary-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 16px;
+}
+
+/* ---------- DELETE CONFIRM ---------- */
+.page-confirm-delete {
+}
+
+.delete-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* ---------- PROFILE ---------- */
+.page-profile {
+}
+
+.profile-header {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.profile-username {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.profile-follow-action {
+    margin-top: 8px;
+}
+
+.locked-message {
+    text-align: center;
+    color: #888;
+    padding: 32px 0;
+}
+
+/* ---------- AUTH (LOGIN / REGISTER) ---------- */
+.page-auth {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.page-auth h1 {
+    margin-bottom: 24px;
+}
+
+.auth-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.auth-switch a {
+    color: #4a90e2;
+}
+
+/* ---------- SHARED FORM STYLES ---------- */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.form-errors {
+    list-style: none;
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* ---------- SEARCH ---------- */
+.page-search {
+}
+
+.search-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-card-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+    margin-top: auto;
+}
+
+/* LIKE */
+.like-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.btn-like {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #555;
+}
+
+.btn-liked {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.likes-count {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* COMMENTS */
+.comments-section {
+    margin-top: 32px;
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+}
+
+.comment-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #4a90e2;
+    margin-right: 8px;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.comment-content {
+    margin-top: 6px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-family: inherit;
+}
+
+.comment-locked {
+    color: #aaa;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.no-comments {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* PROFILE PICTURE
+There were errors that I am unable to fix,
+I then use inline-style*/
+
+
+/* EDIT PROFILE FORM */
+.page-edit-profile {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.edit-profile-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 16px;
+}
+
+.edit-profile-form h2 {
+    font-size: 1rem;
+    color: #888;
+    margin: 20px 0 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
+
+/* =========================================
+   FOLLOWERS & FOLLOWING PAGES
+   ========================================= */
+
+/* The main container for the page */
+.page-follow-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* The header section with the title and back button */
+.follow-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.follow-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.follow-header p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* The Grid that holds all the user cards */
+.user-grid {
+    display: grid;
+    /* This automatically creates columns that shrink and grow! */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* The individual user card */
+.user-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* A smooth hover effect when mousing over a card */
+.user-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* The container for the avatar inside the card */
+.user-card-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevents the avatar from getting squished */
+    margin-right: 15px;
+}
+
+/* Make sure the existing profile picture classes fit this new smaller container */
+.user-card-avatar .profile-picture,
+.user-card-avatar .profile-picture-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    font-size: 24px; /* Smaller text for the placeholder in the card */
+}
+
+/* The username text next to the avatar */
+.user-card-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.user-card-info a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.user-card-info a:hover {
+    color: #007bff; /* Change this to your project's main theme color */
+}
+
+/* The message shown if they have 0 followers */
+.empty-message {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    grid-column: 1 / -1; /* Makes the message span the entire width */
+    padding: 40px 0;
+}

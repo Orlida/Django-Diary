@@ -1,0 +1,90 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}{{ entry.title }} — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-entry-detail">
+
+    <div class="entry-detail-header">
+        <h1 class="entry-detail-title">{{ entry.title }}</h1>
+        <div class="entry-detail-meta">
+            <span>By <a href="{% url 'profile' entry.user.username %}">@{{ entry.user.username }}</a></span>
+            <span>Written on {{ entry.created_at|date:"d M Y, H:i" }}</span>
+            {% if entry.updated_at != entry.created_at %}
+            <span>(Edited {{ entry.updated_at|date:"d M Y, H:i" }})</span>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <div class="entry-detail-content">
+        {% if entry.diary_picture %}
+            <div>
+                <img
+                src="{{ entry.diary_picture.url }}"
+                alt="diary_picture"
+                style="width: auto;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 0%;
+                border: 2px solid #ddd;
+                overflow: hidden;" />
+            </div>
+        {% endif %}
+        {{ entry.content|linebreaks }}
+    </div>
+
+
+
+    <!-- LIKE BUTTON -->
+    <div class="like-section">
+        <form method="POST" action="{% url 'like' entry.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn {% if is_liked %}btn-liked{% else %}btn-like{% endif %}">
+                {% if is_liked %}♥ Liked{% else %}♡ Like{% endif %}
+            </button>
+        </form>
+        <span class="likes-count">{{ likes_count }} like{{ likes_count|pluralize }}</span>
+    </div>
+
+    <!-- COMMENTS SECTION -->
+    <div class="comments-section">
+        <h3>Comments</h3>
+
+        {% if comments %}
+            {% for comment in comments %}
+            <div class="comment-card">
+                <a href="{% url 'profile' comment.user.username %}" class="comment-author">
+                    @{{ comment.user.username }}
+                </a>
+                <span class="comment-date">{{ comment.created_at|date:"d M Y, H:i" }}</span>
+                <p class="comment-content">{{ comment.content }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-comments">No comments yet.</p>
+        {% endif %}
+
+        {% if can_comment %}
+        <form method="POST" action="{% url 'comment' entry.pk %}" class="comment-form">
+            {% csrf_token %}
+            {{ comment_form.content }}
+            <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+        {% else %}
+            <p class="comment-locked">Only mutual followers can comment.</p>
+        {% endif %}
+    </div>
+
+    {% if is_owner %}
+    <div class="entry-detail-actions">
+        <a href="{% url 'entry_edit' entry.pk %}" style="margin-top: 10px;" class="btn btn-edit">Edit Entry</a>
+        <a href="{% url 'entry_delete' entry.pk %}" style="margin-top: 10px;" class="btn btn-delete">Delete Entry</a>
+    </div>
+    {% endif %}
+
+    <a href="{% url 'home' %}" style="margin-top: 10px;" class="btn btn-secondary">← Back to Feed</a>
+
+</div>
+{% endblock %}

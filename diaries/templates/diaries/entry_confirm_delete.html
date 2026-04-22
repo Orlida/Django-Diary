@@ -1,0 +1,18 @@
+{% extends 'diaries/base.html' %}
+
+{% block title %}Delete Entry — Group6 Diary{% endblock %}
+
+{% block content %}
+<div class="page-confirm-delete">
+
+    <h1>Delete Entry</h1>
+    <p>Are you sure you want to delete <strong>"{{ entry.title }}"</strong>? This cannot be undone.</p>
+
+    <form method="POST" class="delete-form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-delete">Yes, Delete</button>
+        <a href="{% url 'entry_detail' entry.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</div>
+{% endblock %}
