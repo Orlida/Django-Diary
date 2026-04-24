@@ -236,6 +236,11 @@ def comment_view(request, pk):
 
 @login_required
 def edit_profile_view(request,username):
+
+    if request.user.username != username:
+        messages.error(request, 'You can only edit your own profile.')
+        return redirect('home')
+
     # Make sure profile exists
     profile, _ = Profile.objects.get_or_create(user=request.user)
 

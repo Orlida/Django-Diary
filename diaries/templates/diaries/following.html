@@ -11,7 +11,7 @@
         gap: 15px;
         margin-top: 15px;">
             <h1>Following</h1>
-            <input id="searchInput" type="text" name="q" placeholder="Search users..." required>
+            <input style="padding-left: 8px;" id="searchInput" type="text" name="q" placeholder="Search users..." required>
         </div>
         <p>People <strong>@{{ profile_user.username }}</strong> follows</p>
         <a href="{% url 'profile' profile_user.username %}" class="btn btn-secondary">&larr; Back to Profile</a>
@@ -43,12 +43,12 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;">
-                            {{ profile_user.username|first|upper }}
+                            {{ follow_obj.following.username|first|upper }}
                         </div>
                     {% endif %}
                 </div>
                 <div class="user-card-info">
-                    <h3><a href="{% url 'profile' follow_obj.following.username %}">@{{ follow_obj.following.username }}</a></h3>
+                    <h3><a style="margin-left: 8px;" href="{% url 'profile' follow_obj.following.username %}">@{{ follow_obj.following.username }}</a></h3>
                 </div>
             </div>
             {% endfor %}

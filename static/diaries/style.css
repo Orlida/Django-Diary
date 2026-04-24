@@ -1,7 +1,10 @@
 /* ============================================================
    GROUP6 DIARY — style.css
-   This file goes in: diaries/static/diaries/style.css
+   Cozy diary palette + DM Serif Display / IBM Plex Sans Thai
+   Layout preserved from original.
    ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap');
 
 /* ---------- RESET & BASE ---------- */
 * {
@@ -11,12 +14,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: 'IBM Plex Sans Thai', 'Segoe UI', sans-serif;
+    background-color: #f5efe3;
+    color: #3d2f1e;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
 a {
@@ -24,19 +28,28 @@ a {
     color: inherit;
 }
 
+h1, h2, h3 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    color: #3d2f1e;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
 /* ---------- NAVBAR ---------- */
 .navbar {
-    background-color: #fff;
+    background-color: #fdfaf2;
     padding: 16px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #d9cdb3;
 }
 
 .nav-logo {
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #3d2f1e;
 }
 
 .nav-links {
@@ -46,18 +59,60 @@ a {
 }
 
 .nav-links a {
-    color: #333;
+    color: #6b5232;
+    font-size: 0.95rem;
+    transition: color 0.15s;
+}
+
+.nav-links a:hover {
+    color: #3d2f1e;
+}
+
+.nav-search {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin: 0;
 }
 
 .nav-search input {
     padding: 6px 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #d9cdb3;
     border-radius: 4px;
+    background: #f5efe3;
+    color: #3d2f1e;
+    font-family: inherit;
+    height: 36px;
 }
 
 .nav-search button {
-    padding: 6px 12px;
+    padding: 0 14px;
     cursor: pointer;
+    border: 1px solid #d9cdb3;
+    border-radius: 4px;
+    background: #f5efe3;
+    color: #6b5232;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+    height: 36px;
+    line-height: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-search button:hover {
+    background: #8b6f47;
+    color: #fdfaf2;
+    border-color: #8b6f47;
+}
+
+.nav-search button:hover {
+    background: #8b6f47;
+    color: #fdfaf2;
+    border-color: #8b6f47;
 }
 
 /* ---------- MAIN CONTENT ---------- */
@@ -78,24 +133,25 @@ a {
     padding: 12px 16px;
     border-radius: 4px;
     margin-bottom: 8px;
+    border-left: 3px solid;
 }
 
 .message-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: #ecf3e2;
+    color: #4a6a2e;
+    border-color: #5a7a3e;
 }
 
 .message-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background-color: #f7e7e5;
+    color: #8a3028;
+    border-color: #a04038;
 }
 
 .message-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
+    background-color: #e8eef1;
+    color: #3a5565;
+    border-color: #4a6b7a;
 }
 
 /* ---------- BUTTONS ---------- */
@@ -103,39 +159,79 @@ a {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 4px;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.15s;
 }
 
 .btn-primary {
-    background-color: #4a90e2;
-    color: #fff;
+    background-color: #8b6f47;
+    color: #fdfaf2;
+    border-color: #8b6f47;
+}
+
+.btn-primary:hover {
+    background-color: #6b5232;
+    border-color: #6b5232;
 }
 
 .btn-secondary {
-    background-color: #eee;
-    color: #333;
+    background-color: transparent;
+    color: #6b5232;
+    border-color: #d9cdb3;
+}
+
+.btn-secondary:hover {
+    background-color: #f5efe3;
+    border-color: #8b6f47;
 }
 
 .btn-edit {
-    background-color: #f0ad4e;
-    color: #fff;
+    background-color: transparent;
+    color: #4a6b7a;
+    border-color: #c9d4d9;
+}
+
+.btn-edit:hover {
+    background-color: #4a6b7a;
+    color: #fdfaf2;
+    border-color: #4a6b7a;
 }
 
 .btn-delete {
-    background-color: #d9534f;
-    color: #fff;
+    background-color: transparent;
+    color: #a04038;
+    border-color: #e5c8c5;
+}
+
+.btn-delete:hover {
+    background-color: #a04038;
+    color: #fdfaf2;
+    border-color: #a04038;
 }
 
 .btn-follow {
-    background-color: #5cb85c;
-    color: #fff;
+    background-color: #5a7a3e;
+    color: #fdfaf2;
+    border-color: #5a7a3e;
+}
+
+.btn-follow:hover {
+    background-color: #456030;
+    border-color: #456030;
 }
 
 .btn-unfollow {
-    background-color: #aaa;
-    color: #fff;
+    background-color: transparent;
+    color: #8b6f47;
+    border-color: #d9cdb3;
+}
+
+.btn-unfollow:hover {
+    background-color: #f5efe3;
 }
 
 /* ---------- HOME / FEED ---------- */
@@ -147,12 +243,27 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #d9cdb3;
+}
+
+.home-header h1 {
+    font-size: 2rem;
+    font-style: italic;
 }
 
 .empty-feed {
     text-align: center;
-    padding: 48px 0;
-    color: #888;
+    padding: 48px 24px;
+    color: #8b6f47;
+    background: #fdfaf2;
+    border: 1px dashed #d9cdb3;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.empty-feed p {
+    margin-bottom: 16px;
 }
 
 /* ---------- ENTRY CARD ---------- */
@@ -163,48 +274,66 @@ a {
 }
 
 .entry-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 24px;
+    transition: border-color 0.2s;
+}
+
+.entry-card:hover {
+    border-color: #8b6f47;
 }
 
 .entry-card-header {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: #888;
+    color: #8b6f47;
     margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #e5dcc8;
 }
 
 .entry-author {
-    font-weight: bold;
-    color: #4a90e2;
+    font-weight: 600;
+    color: #6b5232;
+}
+
+.entry-author:hover {
+    color: #3d2f1e;
 }
 
 .entry-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.entry-title a {
+    color: #3d2f1e;
 }
 
 .entry-title a:hover {
-    text-decoration: underline;
+    color: #6b5232;
 }
 
 .entry-preview {
-    color: #555;
+    color: #5a4a35;
     margin-bottom: 12px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .entry-date {
     font-size: 0.85rem;
-    color: #aaa;
+    color: #8b6f47;
+    font-style: italic;
 }
 
 .entry-card-footer {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 /* ---------- ENTRY DETAIL ---------- */
@@ -213,34 +342,47 @@ a {
 
 .entry-detail-header {
     margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px double #d9cdb3;
 }
 
 .entry-detail-title {
-    font-size: 2rem;
+    font-size: 2.4rem;
     margin-bottom: 8px;
+    line-height: 1.2;
 }
 
 .entry-detail-meta {
     display: flex;
     gap: 16px;
     font-size: 0.85rem;
-    color: #888;
+    color: #8b6f47;
+    font-style: italic;
+    flex-wrap: wrap;
+}
+
+.entry-detail-meta a {
+    color: #6b5232;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .entry-detail-content {
-    line-height: 1.8;
+    line-height: 1.9;
     font-size: 1rem;
     margin-bottom: 32px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
-    padding: 24px;
+    padding: 28px;
+    color: #3d2f1e;
 }
 
 .entry-detail-actions {
     display: flex;
     gap: 8px;
     margin-bottom: 16px;
+    flex-wrap: wrap;
 }
 
 /* ---------- ENTRY FORM (CREATE / EDIT) ---------- */
@@ -248,8 +390,8 @@ a {
 }
 
 .diary-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
     padding: 24px;
     margin-top: 16px;
@@ -270,23 +412,24 @@ a {
 }
 
 .profile-header {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
-    padding: 24px;
+    padding: 28px;
     margin-bottom: 24px;
 }
 
 .profile-username {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 8px;
+    font-style: italic;
 }
 
 .profile-stats {
     display: flex;
     gap: 24px;
     font-size: 0.95rem;
-    color: #555;
+    color: #6b5232;
     margin-bottom: 16px;
 }
 
@@ -296,8 +439,9 @@ a {
 
 .locked-message {
     text-align: center;
-    color: #888;
+    color: #8b6f47;
     padding: 32px 0;
+    font-style: italic;
 }
 
 /* ---------- AUTH (LOGIN / REGISTER) ---------- */
@@ -308,23 +452,32 @@ a {
 
 .page-auth h1 {
     margin-bottom: 24px;
+    font-style: italic;
+    text-align: center;
 }
 
 .auth-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
-    padding: 24px;
+    padding: 28px;
 }
 
 .auth-switch {
     text-align: center;
     margin-top: 16px;
     font-size: 0.9rem;
+    color: #8b6f47;
 }
 
 .auth-switch a {
-    color: #4a90e2;
+    color: #6b5232;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    color: #3d2f1e;
+    text-decoration: underline;
 }
 
 /* ---------- SHARED FORM STYLES ---------- */
@@ -334,23 +487,34 @@ a {
 
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 6px;
     font-size: 0.9rem;
+    color: #6b5232;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #d9cdb3;
     border-radius: 4px;
     font-size: 0.95rem;
     font-family: inherit;
+    background: #f5efe3;
+    color: #3d2f1e;
+    transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8b6f47;
 }
 
 .form-group textarea {
     resize: vertical;
+    line-height: 1.6;
 }
 
 .form-actions {
@@ -361,9 +525,82 @@ a {
 
 .form-errors {
     list-style: none;
-    color: #d9534f;
+    color: #a04038;
     font-size: 0.85rem;
     margin-top: 4px;
+}
+
+/* Django auto-rendered form fields */
+form p {
+    margin-bottom: 14px;
+}
+
+form p label {
+    display: block;
+    color: #6b5232;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d9cdb3;
+    border-radius: 4px;
+    background: #f5efe3;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #3d2f1e;
+    transition: border-color 0.15s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #8b6f47;
+}
+
+form .helptext,
+form ul {
+    font-size: 0.8rem;
+    color: #8b6f47;
+    margin: 4px 0 0 0;
+    list-style: none;
+    padding: 0;
+}
+
+form .errorlist {
+    color: #a04038;
+    font-size: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+}
+
+form button[type="submit"] {
+    /*margin-top: 8px;*/
+    padding: 10px 20px;
+    border-radius: 4px;
+    background: #8b6f47;
+    color: #fdfaf2;
+    border: 1px solid #8b6f47;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+}
+
+form button[type="submit"]:hover {
+    background: #6b5232;
+    border-color: #6b5232;
 }
 
 /* ---------- SEARCH ---------- */
@@ -379,9 +616,17 @@ a {
 .search-form input {
     flex: 1;
     padding: 10px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #d9cdb3;
     border-radius: 4px;
     font-size: 0.95rem;
+    background: #fdfaf2;
+    color: #3d2f1e;
+    font-family: inherit;
+}
+
+.search-form input:focus {
+    outline: none;
+    border-color: #8b6f47;
 }
 
 .search-results {
@@ -390,19 +635,10 @@ a {
     gap: 12px;
 }
 
-.user-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .user-card-name {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1rem;
+    color: #3d2f1e;
 }
 
 /* ---------- FOOTER ---------- */
@@ -410,100 +646,144 @@ a {
     text-align: center;
     padding: 24px;
     font-size: 0.85rem;
-    color: #aaa;
-    border-top: 1px solid #eee;
-    background-color: #fff;
+    color: #8b6f47;
+    border-top: 1px solid #d9cdb3;
+    background-color: #fdfaf2;
     margin-top: auto;
+    font-style: italic;
 }
 
-/* LIKE */
+/* ---------- LIKE ---------- */
 .like-section {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding: 12px 0;
     margin-bottom: 24px;
+    border-top: 1px dashed #d9cdb3;
+    border-bottom: 1px dashed #d9cdb3;
 }
 
 .btn-like {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    color: #555;
+    background-color: transparent;
+    border: 1px solid #d9cdb3;
+    color: #8b6f47;
+}
+
+.btn-like:hover {
+    background-color: #f5efe3;
+    border-color: #8b6f47;
 }
 
 .btn-liked {
-    background-color: #e74c3c;
-    color: #fff;
+    background-color: #d8a5a5;
+    color: #6a1f1a;
+    border: 1px solid #c88585;
+}
+
+.btn-liked:hover {
+    background-color: #c88585;
+    border-color: #b87575;
 }
 
 .likes-count {
     font-size: 0.9rem;
-    color: #888;
+    color: #8b6f47;
+    font-style: italic;
 }
 
-/* COMMENTS */
+/* ---------- COMMENTS ---------- */
 .comments-section {
     margin-top: 32px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #d9cdb3;
     padding-top: 24px;
 }
 
+.comments-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
 .comment-card {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 8px;
+    background-color: #f5efe3;
+    border-left: 3px solid #8b6f47;
+    border-radius: 0 4px 4px 0;
     padding: 12px 16px;
     margin-bottom: 12px;
 }
 
 .comment-author {
-    font-weight: bold;
-    color: #4a90e2;
+    font-weight: 600;
+    color: #6b5232;
     margin-right: 8px;
+}
+
+.comment-author:hover {
+    color: #3d2f1e;
 }
 
 .comment-date {
     font-size: 0.8rem;
-    color: #aaa;
+    color: #8b6f47;
+    font-style: italic;
 }
 
 .comment-content {
     margin-top: 6px;
+    color: #5a4a35;
+    line-height: 1.6;
+}
+
+.comment-form {
+    margin-top: 16px;
 }
 
 .comment-form textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 10px 12px;
+    border: 1px solid #d9cdb3;
     border-radius: 4px;
     margin-bottom: 8px;
     font-family: inherit;
+    background: #fdfaf2;
+    color: #3d2f1e;
+    transition: border-color 0.15s;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #8b6f47;
 }
 
 .comment-locked {
-    color: #aaa;
+    color: #8b6f47;
     font-size: 0.9rem;
     font-style: italic;
+    text-align: center;
+    padding: 12px;
+    background: #f5efe3;
+    border: 1px dashed #d9cdb3;
+    border-radius: 4px;
 }
 
 .no-comments {
-    color: #aaa;
+    color: #8b6f47;
     font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    padding: 16px;
 }
 
-/* PROFILE PICTURE
-There were errors that I am unable to fix,
-I then use inline-style*/
-
-
-/* EDIT PROFILE FORM */
+/* ---------- EDIT PROFILE ---------- */
 .page-edit-profile {
     max-width: 500px;
     margin: 0 auto;
 }
 
 .edit-profile-form {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
     border-radius: 8px;
     padding: 24px;
     margin-top: 16px;
@@ -511,107 +791,140 @@ I then use inline-style*/
 
 .edit-profile-form h2 {
     font-size: 1rem;
-    color: #888;
+    color: #8b6f47;
     margin: 20px 0 12px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e5dcc8;
     padding-bottom: 6px;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* =========================================
    FOLLOWERS & FOLLOWING PAGES
    ========================================= */
 
-/* The main container for the page */
 .page-follow-list {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* The header section with the title and back button */
 .follow-header {
     text-align: center;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #d9cdb3;
 }
 
 .follow-header h1 {
-    font-size: 32px;
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #3d2f1e;
+    font-style: italic;
 }
 
 .follow-header p {
-    color: #666;
+    color: #8b6f47;
     margin-bottom: 20px;
+    font-style: italic;
 }
 
-/* The Grid that holds all the user cards */
 .user-grid {
     display: grid;
-    /* This automatically creates columns that shrink and grow! */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
-/* The individual user card */
 .user-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    background-color: #fdfaf2;
+    border: 1px solid #e5dcc8;
+    border-radius: 8px;
     padding: 15px;
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    justify-items: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
 }
 
-/* A smooth hover effect when mousing over a card */
 .user-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 14px rgba(61, 47, 30, 0.08);
+    border-color: #8b6f47;
 }
 
-/* The container for the avatar inside the card */
 .user-card-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    flex-shrink: 0; /* Prevents the avatar from getting squished */
+    flex-shrink: 0;
     margin-right: 15px;
+    border: 2px solid #d9cdb3;
 }
 
-/* Make sure the existing profile picture classes fit this new smaller container */
 .user-card-avatar .profile-picture,
 .user-card-avatar .profile-picture-placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    font-size: 24px; /* Smaller text for the placeholder in the card */
+    font-size: 24px;
 }
 
-/* The username text next to the avatar */
 .user-card-info h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.1rem;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-weight: 600;
 }
 
 .user-card-info a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: #3d2f1e;
+    font-weight: 600;
 }
 
 .user-card-info a:hover {
-    color: #007bff; /* Change this to your project's main theme color */
+    color: #6b5232;
 }
 
-/* The message shown if they have 0 followers */
 .empty-message {
     text-align: center;
-    color: #888;
+    color: #8b6f47;
     font-style: italic;
-    grid-column: 1 / -1; /* Makes the message span the entire width */
+    grid-column: 1 / -1;
     padding: 40px 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .nav-search input {
+        width: 120px;
+    }
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .main-content {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+    .entry-detail-title {
+        font-size: 1.8rem;
+    }
+    .home-header h1 {
+        font-size: 1.6rem;
+    }
+    .entry-detail-content {
+        padding: 20px;
+    }
+    .profile-header {
+        padding: 20px;
+    }
 }
