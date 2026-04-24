@@ -24,9 +24,9 @@ A full-stack diary web application built with Django, deployed on PythonAnywhere
 
 | Layer | Technology |
 |---|---|
-| Backend | Python, Django 6.0 |
+| Backend | Python 3.13, Django 6.0 |
 | Database | SQLite3 |
-| Frontend | HTML, CSS (plain, no frameworks) |
+| Frontend | HTML, CSS, JavaScript |
 | Deployment | PythonAnywhere |
 | Version Control | Git, GitHub |
 
@@ -125,4 +125,4 @@ http://127.0.0.1:8000/
 
 ## License
 
-This project was developed as a university coursework assignment.
+This project was developed as a Chulalongkorn university coursework assignment.
