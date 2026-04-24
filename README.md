@@ -1,4 +1,4 @@
-# 📔 Group6 Diary
+# Django Diary
 
 A full-stack diary web application built with Django, deployed on PythonAnywhere. Users can write personal diary entries, follow friends, and interact through likes and comments.
 
